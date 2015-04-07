@@ -1,0 +1,486 @@
+// Import Bootstrap Compass integration
+@import "bootstrap-compass";
+
+// Import custom Bootstrap variables
+@import "bootstrap-variables";
+
+// Import Bootstrap for Sass
+@import "bootstrap";
+
+$my-cubic: cubic-bezier(1,0,.75,1.25);
+
+.container-fl {
+	@include container-fixed();
+}
+
+body {
+	font-family: "Montserrat", sans-serif;
+	font-weight:400;
+}
+
+.unsticky-body {
+	margin-top: 0px;
+}
+
+.sticky-body {
+	margin-top: 80px;
+	@media (min-width:768px) {
+		margin-top: 55px;
+	} 
+}
+
+.h3 {
+	font-family: $font-family-serif;
+	font-style: italic;
+}
+
+#weather {
+	@include container-fixed();
+	visibility: hidden;
+	display: none;
+
+	@media (min-width:900px) {
+		visibility: visible;
+		display: block;
+	}
+
+	height: 40px;
+	line-height: 40px;
+	.h5, h5 {
+		margin: 0 15px 0 0;
+		line-height: 40px;
+	}
+}
+
+#weather a, #weather .conditions {
+	float: left;
+	img {
+		float: right;
+		height: 40px;
+		padding:8px;
+		width: 40px;
+	}
+}
+
+#weather a {
+	color: $brand-primary;
+	margin-right: 15px;
+}
+
+#weather .weather-nav {
+	float: right;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	li {
+		display: inline;
+		&:first-child, &:nth-child(2) {
+			a {
+				padding-right: 15px;
+				border-right: 1px solid #eee;
+				&:hover {
+					transform: none;
+				}
+			}
+		}
+
+		a {
+			text-decoration: none;
+			line-height: 40px;
+			margin-top: 0;
+			margin-bottom: 0;
+			color: lighten($gray-light, 20);
+			transition: all .2s $my-cubic;
+			&:hover, &:active {
+				color: $gray-dark;
+				transform: scale(1.3);
+			}
+		}
+		&:last-child a {
+				margin-right: 0;
+			}
+	}
+}
+
+.site-header {
+	@extend .navbar;
+	@extend .navbar-inverse;
+	@extend .navbar-static-top;
+	transition: all .2s $my-cubic;
+	-webkit-transition: all .2s $my-cubic;
+}
+
+.site-header.sticky {
+	@extend .navbar-fixed-top;
+	min-height: 50px;
+}
+
+.site-header .navbar-nav > li > a {
+	transition: all .2s $my-cubic;
+	-webkit-transition: all .2s $my-cubic;
+	transform: skew(0deg);
+	text-transform: uppercase;
+	border-bottom: 1px solid darken($brand-primary, 5);
+	span {
+		display: inline-block;
+		transform: skew(0deg);
+	}
+	@media (min-width: 900px) {
+		border-bottom: none;
+		transform: skew(-20deg);
+		span {
+			transform: skew(20deg);
+		}
+	}
+}
+
+.site-header.sticky .navbar-nav > li > a  {
+	@media (min-width: 900px) {
+		padding:18px 15px 12px 10px;
+	}
+}
+
+.site-header .navbar-nav > li {
+	a:before {
+		margin-right: 10px;
+		display: inline-block;
+		font: normal normal normal 14px/1 FontAwesome;
+		font-size: inherit;
+		text-rendering: auto;
+		width: 20px;
+		text-align: center;
+		opacity: .5;
+		 -webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		@media (min-width:900px) {
+			width: 0;
+			margin-right: 0;
+		}
+	}
+	&:nth-child(1) {
+		a:before {
+			content: "\f0cb"; // NUM LIST ICON
+			@media (min-width:900px) {
+				content: "";
+			}
+		}
+	}
+	&:nth-child(2) {
+		a:before {
+			content: "\f041"; // MAP-MARKER ICON
+			@media (min-width:900px) {
+				content: "";
+			}
+		}
+	}
+	&:nth-child(3) {
+		a:before {
+			content: "\f086"; // COMMENTS ICON
+			@media (min-width:900px) {
+				content: "";
+			}
+		}
+	}
+	&:nth-child(4) {
+		a:before {
+			content: "\f234"; // USER-PLUS (CAREERS) ICON
+			@media (min-width:900px) {
+				content: "";
+			}
+		}
+	}
+	&:nth-child(5) {
+		a:before {
+			content: "\f10b"; // MOBILE (REWARDS) ICON
+			@media (min-width:900px) {
+				content: "";
+			}
+		}
+	}
+}
+
+.site-header .navbar-nav li > a.only-toggled {
+	@media (min-width:900px) {
+		visibility: hidden;
+		display: none;
+	}
+}
+
+.site-header {
+	box-shadow: 0px 1px 2px rgba(0,0,0,0.4);
+	margin-bottom: 0;
+}
+
+.site-header .navbar-collapse {
+	border: none;
+	box-shadow: none;
+	max-height: 420px;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.site-header.sticky .navbar-nav {
+	margin:10px 0 20px 0;
+	@media (min-width: 900px)  {
+		margin: 0;
+	}
+}
+
+.site-header .navbar-nav {
+	margin: 10px 0 20px 0;
+	@media (min-width: 900px)  {
+		margin: 0;
+	}
+}
+
+.site-header .navbar-form {
+	border: none;
+	box-shadow: none;
+	margin: 0 0 10px 0;
+	@media (min-width: 900px)  {
+		margin: 23px 0 23px 0;
+		padding: 0;
+	}
+	label {
+		color: darken($brand-primary, 25);
+		margin-right: 5px;
+		i {
+			margin-right: 5px;
+			&:after {
+				content: "Find a Halo Burger";
+				font-family: "Montserrat";
+				vertical-align: top;
+				font-size: 14px;
+				padding-left: 5px;
+				@media (min-width: 900px) and (max-width: 999px) {
+					content: "";
+				}
+			}
+		}
+	}
+}
+
+.site-header.sticky .navbar-form {
+	@media (min-width: 900px)  {
+		margin: 8px 0;
+		label {
+			vertical-align: sub;
+		}
+		.form-control {
+			  padding: 10px 12px 5px;
+		}
+	}
+}
+
+.site-header .navbar-toggle {
+	margin: 23px 0 15px;
+	transition: all .2s $my-cubic;
+	-webkit-transition: all .2s $my-cubic;
+	padding: 5px;
+	border: none;
+	background: none;
+	&:hover, &:visited, &:focus, &:active {
+		background: none;
+	}
+	&.collapsed {
+		.icon-bar {
+			&:nth-child(2), &:nth-child(5) {
+				width:35px;
+			}
+			&:nth-child(3), &:nth-child(4) {
+				transform: rotate(0deg);
+			}
+		}
+	}
+	.icon-bar {
+		width: 35px;
+		height: 4px;
+		transform-origin: center center;
+		transition: all .2s $my-cubic;
+		-webkit-transition: all .2s $my-cubic;
+		&:nth-child(2) {
+			width:0;
+		}
+		&:nth-child(3) {
+			margin-top: 7px;
+			transform: rotate(-45deg);
+		}
+		&:nth-child(4) {
+			margin-top: -4px;
+			transform: rotate(45deg);
+		}
+		&:nth-child(5) {
+			margin-top: 7px;
+			width:0;
+		}
+	}
+}
+
+.site-header.sticky .navbar-toggle {
+	margin: 10px 0;
+	.icon-bar {
+		width: 24px;
+		height: 3px;
+		&:nth-child(2) {
+			width:0;
+		}
+		&:nth-child(3) {
+			margin-top: 7px;
+			transform: rotate(-45deg);
+		}
+		&:nth-child(4) {
+			margin-top: -4px;
+			transform: rotate(45deg);
+		}
+		&:nth-child(5) {
+			margin-top: 7px;
+			width:0;
+		}	
+	}
+
+	&.collapsed {
+		.icon-bar {
+			&:nth-child(2), &:nth-child(5) {
+				width: 24px;
+				margin-top: 5px;
+			}
+			&:nth-child(2) {
+				margin-top:0;
+			}
+			&:nth-child(3), &:nth-child(4) {
+				width: 24px;
+				transform: rotate(0deg);
+				margin-top: 5px;
+			}
+			&:nth-child(4) {
+				margin-top: -3px; 
+			}
+		}
+	}
+}
+
+.site-header .navbar-brand {
+	margin: 0 25px 0 0;
+	padding: 0;
+	svg {
+		position: relative;
+		top: 50%;
+		transform: translateY(-53%);
+		width: 200px;
+		transition: all .2s $my-cubic;
+		-webkit-transition: all .2s $my-cubic;
+		&:hover {
+			width: 220px;
+			margin-left: -10px;
+			margin-right: -10px;
+		}
+		fill: white;
+	}
+}
+.site-header.sticky .navbar-brand {
+	height: 50px;
+	svg {
+		width: 160px;
+		transform: translateY(-51%);
+		&:hover {
+			width: 170px;
+			margin-left: -5px;
+			margin-right: -5px;
+		}
+	}
+}
+
+.social-mobile {
+	list-style: none;
+	padding: 0 0 0 6px;
+	margin: 0;
+	border-top: 1px solid darken($brand-primary, 5);
+	li {
+		display: inline-block;
+		a {
+			display: block;
+			color: #ddd;
+			font-size: 20px;
+			line-height: 30px;
+			height: 30px;
+			width: 40px;
+			text-decoration: none;
+			text-align: center;
+			transition: all .2s $my-cubic;
+			-webkit-transition: all .2s $my-cubic;
+			&:hover {
+				transform: scale(1.3);
+				color: white;
+				background: darken($brand-primary, 5);
+			}
+		}
+	}
+	@media (min-width: 900px) {
+		display: none;
+		visibility: hidden;
+	}
+}
+
+.jumbo {
+	background: #a39185 url('../img/Halo_Double-Truck2.png') center center no-repeat;
+	background-size: 100%;
+	position: relative;
+	width: 100%;
+	padding: 30px;
+	color: #FFF;
+	.content {
+		.h1 {
+			font-size: 65px;
+			font-weight: 700;
+		}
+		.h3 {
+		}
+		text-transform: uppercase;
+		position: absolute;
+		top: 50%;
+		width: 45%;
+		right: 0;
+		transform: translateY(-50%);
+	}
+}
+
+.jumbo:before {
+	content: "";
+	display: block;
+	padding-top: 35%; 	/* initial ratio of 1:1*/
+}
+
+.stripe {
+	background: #333;
+	text-align: center;
+	color: #ccc;
+	padding: 15px;
+	font-family: $font-family-serif;
+	p {
+		line-height: 1.5em;
+		&:hover {
+			color: #eee;
+		}
+	}
+	i {
+		padding-right: 15px;
+		color: #aaa;
+		vertical-align: middle;
+	}
+}
+
+.fresh {
+	background: #A5842F; // GOLD-LIKE
+	text-align: center;
+	text-transform: uppercase;
+	width: auto;
+	margin: 20px;
+	color: #fff;
+	padding: 10px;
+	position: relative;
+	.h3 {
+		margin: 0;
+		border: 1px dotted #fff;
+		padding: 5px;
+	}
+}
