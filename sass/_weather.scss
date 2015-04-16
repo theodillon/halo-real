@@ -1,0 +1,67 @@
+#weather {
+	@include container-fixed();
+	visibility: hidden;
+	display: none;
+
+	@media (min-width:900px) {
+		visibility: visible;
+		display: block;
+	}
+
+	height: 40px;
+	line-height: 40px;
+	.h5, h5 {
+		margin: 0 15px 0 0;
+		line-height: 40px;
+	}
+}
+
+#weather a, #weather .conditions {
+	float: left;
+	img {
+		float: right;
+		height: 40px;
+		padding:8px;
+		width: 40px;
+	}
+}
+
+#weather a {
+	color: $brand-primary;
+	margin-right: 15px;
+}
+
+#weather .weather-nav {
+	float: right;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	li {
+		display: inline;
+		&:first-child, &:nth-child(2) {
+			a {
+				padding-right: 15px;
+				border-right: 1px solid #eee;
+				&:hover {
+					transform: none;
+				}
+			}
+		}
+
+		a {
+			text-decoration: none;
+			line-height: 40px;
+			margin-top: 0;
+			margin-bottom: 0;
+			color: lighten($gray-light, 20);
+			transition: all .2s $my-cubic;
+			&:hover, &:active {
+				color: $gray-dark;
+				transform: scale(1.3);
+			}
+		}
+		&:last-child a {
+				margin-right: 0;
+			}
+	}
+}

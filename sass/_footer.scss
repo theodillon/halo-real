@@ -1,0 +1,38 @@
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 10em;  // MUST be same as body's margin-bottom to stick
+    @media (min-width:900px) {
+		height: 6em;
+    }
+    width: 100%;
+    background: #222;
+    padding: 20px 15px;
+    .copyright {
+    	color: #aaa;
+    	clear: left;
+    	float: left;
+    	margin-top: 15px;
+    }
+}
+
+.footer-nav {
+	list-style: none;
+	display: inline;
+	margin: 0;
+	padding: 0;
+	li {
+		float: left;
+		a, a:visited {
+			color: #bbb;
+			padding-right: 15px;
+			text-transform: uppercase;
+			text-decoration: none;
+			&:hover, &:active, &:focus {
+				text-decoration: none;
+				color: #ddd;
+			}
+		}
+	}
+}

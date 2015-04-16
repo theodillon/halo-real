@@ -1,0 +1,43 @@
+$my-cubic: cubic-bezier(1,0,.75,1.25);
+
+.container-fl {
+	@include container-fixed();
+}
+
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0 0 calc(10em + 40px); /* bottom MUST be same as footer height, plus addt'l margin */
+    @media (min-width:900px) {
+		margin: 0 0 calc(6em + 20px);
+    }
+	font-family: $font-family-sans-serif;
+	font-weight: 400;
+
+}
+
+.unsticky-body {
+	margin-top: 0px;
+}
+
+.sticky-body {
+	margin-top: 80px;
+	@media (min-width:768px) {
+		margin-top: 55px;
+	} 
+}
+
+h1, .h1 {
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: -0.04em;
+}
+
+.h3 {
+	font-family: $font-family-serif;
+	font-style: italic;
+}
